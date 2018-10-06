@@ -1,10 +1,10 @@
-import tortilla
-import random
-import webbrowser
 import argparse
+import random
 import re
 import textwrap
+import webbrowser
 
+import tortilla
 
 DFAULT_PAGINA = 'python-ecuador'
 
