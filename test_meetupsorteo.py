@@ -8,14 +8,14 @@ import meetupsorteo
 
 def test_procesar_argumentos_evento():
     sys.argv = [sys.executable] + ['evento']
-    args = meetupsorteo.procesar_argumentos()
+    args = meetupsorteo.get_argparser().parse_args()
     assert args.evento == 'evento'
 
 
 def test_procesar_argumentos_evento_es_requerido():
     sys.argv = [sys.executable]
     with pytest.raises(SystemExit):
-        meetupsorteo.procesar_argumentos()
+        meetupsorteo.get_argparser().parse_args()
 
 
 @pytest.mark.parametrize(
@@ -27,7 +27,7 @@ def test_procesar_argumentos_evento_es_requerido():
     ])
 def test_procesar_argumentos_numero(opcion, esperado):
     sys.argv = [sys.executable] + opcion + ['evento']
-    args = meetupsorteo.procesar_argumentos()
+    args = meetupsorteo.get_argparser().parse_args()
     assert args.numero == esperado
 
 
@@ -39,7 +39,7 @@ def test_procesar_argumentos_numero(opcion, esperado):
     ])
 def test_procesar_argumentos_abrir_perfil(opcion, esperado):
     sys.argv = [sys.executable] + opcion + ['evento']
-    args = meetupsorteo.procesar_argumentos()
+    args = meetupsorteo.get_argparser().parse_args()
     assert args.no_abrir_perfil == esperado
 
 
@@ -151,9 +151,9 @@ def test_mostrar_ganador_mensaje_correcto(printmock):
     assert '¡Felicitacines Uno!' in args[0]
 
 
-@mock.patch('meetupsorteo.procesar_argumentos')
 @mock.patch('meetupsorteo.procesar_evento')
-def test_main_captura_excepcion(procesar_evento, procesar_argumentos):
+@mock.patch('meetupsorteo.get_argparser')
+def test_main_captura_excepcion(get_argparser, procesar_evento):
     procesar_evento.side_effect = Exception
     with pytest.raises(SystemExit):
         meetupsorteo.main()
@@ -162,9 +162,9 @@ def test_main_captura_excepcion(procesar_evento, procesar_argumentos):
 @mock.patch('meetupsorteo.mostrar_ganador')
 @mock.patch('meetupsorteo.seleccionar_ganadores')
 @mock.patch('meetupsorteo.procesar_evento')
-@mock.patch('meetupsorteo.procesar_argumentos')
+@mock.patch('meetupsorteo.get_argparser')
 def test_main_flujo_completo(
-        procesar_argumentos, procesar_evento,
+        get_argparser, procesar_evento,
         seleccionar_ganadores, mostrar_ganador):
     asistentes = _get_asistentes()
     procesar_evento.return_value = (mock.Mock(), mock.Mock())
@@ -172,7 +172,7 @@ def test_main_flujo_completo(
 
     meetupsorteo.main()
 
-    procesar_argumentos.assert_called_once()
+    get_argparser.assert_called_once()
     procesar_evento.assert_called_once()
     seleccionar_ganadores.assert_called_once()
     assert len(mostrar_ganador.mock_calls) == len(asistentes)

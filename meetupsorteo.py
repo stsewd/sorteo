@@ -9,7 +9,7 @@ import tortilla
 DFAULT_PAGINA = 'python-ecuador'
 
 
-def procesar_argumentos():
+def get_argparser():
     """
     Agregar argumentos y opciones para la interfaz de línea de comandos.
     """
@@ -31,7 +31,7 @@ def procesar_argumentos():
         type=str,
         help="URL o id del evento."
     )
-    return parser.parse_args()
+    return parser
 
 
 def get_asistentes(pagina, evento):
@@ -113,7 +113,7 @@ def mostrar_ganador(miembro, abrir_perfil=False, **kwargs):
 
 
 def main():
-    args = procesar_argumentos()
+    args = get_argparser().parse_args()
     try:
         pagina, evento = procesar_evento(args.evento)
     except Exception as e:
