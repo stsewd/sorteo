@@ -19,9 +19,9 @@ def procesar_argumentos():
         help="Número de asistentes a escoger."
     )
     parser.add_argument(
-        "--abrir-perfil",
-        type=bool, default=True,
-        help="Abrir el perfil de cada ganador en el navegador"
+        "--no-abrir-perfil",
+        action='store_true',
+        help="No abrir el perfil de cada ganador en el navegador"
     )
     parser.add_argument(
         'evento',
@@ -98,7 +98,7 @@ def main():
         exit(1)
     ganadores = seleccionar_ganadores(pagina, evento, numero=args.numero)
     for ganador in ganadores:
-        mostrar_ganador(ganador, args.abrir_perfil)
+        mostrar_ganador(ganador, not args.no_abrir_perfil)
 
 
 if __name__ == "__main__":
