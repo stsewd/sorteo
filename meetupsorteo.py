@@ -10,6 +10,9 @@ DFAULT_PAGINA = 'python-ecuador'
 
 
 def procesar_argumentos():
+    """
+    Agregar argumentos y opciones para la interfaz de línea de comandos.
+    """
     parser = argparse.ArgumentParser(
         description="Escoge al azar uno o varios asistentes de un meetup."
     )
@@ -33,6 +36,9 @@ def procesar_argumentos():
 
 def get_asistentes(pagina, evento):
     """
+    Obtener asistenes de un evento usando la API de meetup.
+
+    Más información en la documentación oficial de meetup:
     https://www.meetup.com/es/meetup_api/docs/:urlname/events/:id/attendance/
     """
     api = tortilla.wrap(
@@ -42,6 +48,12 @@ def get_asistentes(pagina, evento):
 
 
 def procesar_evento(evento):
+    """
+    Obtener el id y nombre de la página dado el id o URL del evento.
+
+    Si el evento es sólo un id
+    la página será dada por `DEFAULT_PAGINA`.
+    """
     regex_solo_id = re.compile(r'\d+')
     regex_full_url = re.compile(
         r'(https?://)?www.meetup.com/'  # puede tener el protocolo
@@ -59,6 +71,11 @@ def procesar_evento(evento):
 
 
 def seleccionar_ganadores(pagina, evento, numero):
+    """
+    Seleccionar `numero` asistentes de un evento de manera aleatoria.
+
+    Los asistentes deben haber respondido que si al evento.
+    """
     asistentes = get_asistentes(pagina, evento)
     asistentes_presentes = {
         asistente["member"]["id"]: asistente
@@ -76,6 +93,12 @@ def seleccionar_ganadores(pagina, evento, numero):
 
 
 def mostrar_ganador(miembro, abrir_perfil=False, **kwargs):
+    """
+    Mostrar el nombre y perfil del ganador.
+
+    Si `abrir_perfil` es `True`,
+    se abrirá el perfil del ganador en el navegador.
+    """
     nombre = miembro["member"]["name"]
     id_ = miembro["member"]["id"]
     perfil = f"https://www.meetup.com/python-ecuador/members/{id_}"
