@@ -1,0 +1,9 @@
+# Tests
+pytest
+
+# Formatter
+isort
+
+# Docs
+sphinx
+sphinx-autobuild
