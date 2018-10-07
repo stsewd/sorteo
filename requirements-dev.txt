@@ -7,3 +7,4 @@ isort
 # Docs
 sphinx
 sphinx-autobuild
+sphinx-argparse

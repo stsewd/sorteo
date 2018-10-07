@@ -1,19 +1,55 @@
-.. Meetup Sorteo documentation master file, created by
-   sphinx-quickstart on Sat Oct  6 22:54:47 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Meetup Sorteo
+=============
 
-Welcome to Meetup Sorteo's documentation!
-=========================================
+Script usado para realizar sorteos usando los asistentes de un evento de `Meetup <https://www.meetup.com/>`__.
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+.. note::
+
+   Uso enfocado en la comunidad de `Python Ecuador <https://pythonecuador.org/>`__.
+   Pero es extensible para ser usado de manera general.
+
+.. contents:: Contenidos
+   :local:
+
+Uso
+---
+
+.. argparse::
+   :module: meetupsorteo
+   :func: get_argparser
+   :prog: meetupsorteo
+
+   evento
+       Si sólo es dado el id del evento,
+       por defecto se buscará eventos de `Python Ecuador <https://www.meetup.com/es/python-ecuador/>`__
 
 
+Ejemplos
+--------
 
-Indices and tables
-==================
+Para hacer un sorteo de `este evento <https://www.meetup.com/es/python-ecuador/events/254871518/>`__
+con 3 ganadores:
+
+.. code:: bash
+  
+  meetupsorteo -n 3 https://www.meetup.com/es/python-ecuador/events/254871518/
+
+o
+
+.. code:: bash
+
+  meetupsorteo -n 3 254871518
+
+Contribuir
+----------
+
+- Haz un fork
+- Crea una nueva rama
+- Escribe tus cambios y agrega tests
+- Envía un Pull Requests
+
+Indices
+-------
 
 * :ref:`genindex`
 * :ref:`modindex`
