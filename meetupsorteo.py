@@ -46,7 +46,7 @@ def procesar_evento(evento):
     regex_full_url = re.compile(
         r'(https?://)?www.meetup.com/'  # puede tener el protocolo
         r'(\w+/)?'  # puede tener el lenguage
-        r'(?P<pagina>\w+)/events/(?P<evento>\d+)/?'
+        r'(?P<pagina>.+)/events/(?P<evento>\d+)/?'
     )
     if regex_solo_id.match(evento):
         return DFAULT_PAGINA, evento

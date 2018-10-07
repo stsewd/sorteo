@@ -56,6 +56,9 @@ def test_procesar_argumentos_abrir_perfil(opcion, esperado):
         ('www.meetup.com/python/events/1234', 'python', '1234'),
         ('http://www.meetup.com/python/events/1234', 'python', '1234'),
         ('https://www.meetup.com/python/events/1234/', 'python', '1234'),
+        # Nombre con varios caracteres
+        ('www.meetup.com/py-ecuador/events/1234', 'py-ecuador', '1234'),
+        ('www.meetup.com/python-1234/events/1234', 'python-1234', '1234'),
     ])
 def test_procesar_evento(evento_test, pagina_esperada, evento_esperado):
     pagina, evento = meetupsorteo.procesar_evento(evento_test)
