@@ -1,5 +1,5 @@
-Meetup Sorteo
-=============
+Sorteo
+======
 
 Script usado para realizar sorteos usando los asistentes de un evento de `Meetup <https://www.meetup.com/>`__.
 
@@ -15,9 +15,9 @@ Uso
 ---
 
 .. argparse::
-   :module: meetupsorteo
+   :module: sorteo
    :func: get_argparser
-   :prog: meetupsorteo
+   :prog: sorteo
 
    evento
        Si sólo es dado el id del evento,
@@ -32,13 +32,13 @@ con 3 ganadores:
 
 .. code:: bash
   
-  meetupsorteo -n 3 https://www.meetup.com/es/python-ecuador/events/254871518/
+  sorteo -n 3 https://www.meetup.com/es/python-ecuador/events/254871518/
 
 o
 
 .. code:: bash
 
-  meetupsorteo -n 3 254871518
+  sorteo -n 3 254871518
 
 Contribuir
 ----------
@@ -48,7 +48,7 @@ Contribuir
 - Escribe tus cambios y agrega tests
 - Envía un Pull Requests
 
-Indices
+Índices
 -------
 
 * :ref:`genindex`

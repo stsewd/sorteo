@@ -12,6 +12,12 @@ def tests(session):
 
 
 @nox.session
+def format(session):
+    session.install("-r", "requirements-dev.txt")
+    session.run("black", *black_options, *files)
+
+
+@nox.session
 def lint(session):
     session.install("-r", "requirements-dev.txt")
     session.run("black", *black_options, "--check", *files)
@@ -19,13 +25,12 @@ def lint(session):
 
 
 @nox.session
-def format(session):
-    session.install("-r", "requirements-dev.txt")
-    session.run("black", *black_options, *files)
-
-
-@nox.session
 def docs(session):
     session.install("-r", "requirements-dev.txt")
     session.chdir("docs")
-    session.run("sphinx-build", "-W", ".", "_build/html")
+    session.run("rm", "-rf", "_build/")
+    sphinx_args = ["-W", ".", "_build/html"]
+    if "serve" in session.posargs:
+        session.run("sphinx-autobuild", *sphinx_args)
+    else:
+        session.run("sphinx-build", *sphinx_args)

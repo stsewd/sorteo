@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath(".."))
 
 # -- Project information -----------------------------------------------------
 
-project = "Meetup Sorteo"
+project = "Sorteo"
 copyright = "2018, Santos Gallegos"
 author = "Santos Gallegos"
 
@@ -86,7 +86,7 @@ html_theme = "alabaster"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ["_static"]
+#  html_static_path = ["_static"]
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -102,7 +102,7 @@ html_static_path = ["_static"]
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "MeetupSorteodoc"
+htmlhelp_basename = "Sorteodoc"
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -128,8 +128,8 @@ latex_elements = {
 latex_documents = [
     (
         master_doc,
-        "MeetupSorteo.tex",
-        "Meetup Sorteo Documentation",
+        "Sorteo.tex",
+        "Sorteo Documentation",
         "Santos Gallegos",
         "manual",
     )
@@ -140,9 +140,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    (master_doc, "meetupsorteo", "Meetup Sorteo Documentation", [author], 1)
-]
+man_pages = [(master_doc, "sorteo", "Sorteo Documentation", [author], 1)]
 
 
 # -- Options for Texinfo output ----------------------------------------------
@@ -153,10 +151,10 @@ man_pages = [
 texinfo_documents = [
     (
         master_doc,
-        "MeetupSorteo",
-        "Meetup Sorteo Documentation",
+        "Sorteo",
+        "Sorteo Documentation",
         author,
-        "MeetupSorteo",
+        "Sorteo",
         "One line description of project.",
         "Miscellaneous",
     )
