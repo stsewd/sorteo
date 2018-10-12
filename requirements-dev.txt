@@ -1,8 +1,10 @@
+-r requirements.txt
 # Tests
 pytest
 
-# Formatter
+# Formatter & linter
 isort
+flake8
 
 # Docs
 sphinx
