@@ -12,8 +12,8 @@ def lint(session):
     session.install('-r', 'requirements-dev.txt')
     session.run(
         'flake8',
-        'meetupsorteo.py',
-        'test_meetupsorteo.py',
+        'sorteo.py',
+        'test_sorteo.py',
         'docs/conf.py'
     )
 
