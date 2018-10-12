@@ -1,7 +1,10 @@
 language: python
 python:
   - "3.6"
-install:
-  - pip install -r requirements-dev.txt
+matrix:
+  include:
+    - env: NOXSESSION=tests
+    - env: NOXSESSION=lint
+    - env: NOXSESSION=docs
 script:
-  - pytest
+  - nox -s $NOXSESSION
