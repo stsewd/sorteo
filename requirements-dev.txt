@@ -5,6 +5,7 @@ pytest
 # Formatter & linter
 isort
 flake8
+black
 
 # Docs
 sphinx

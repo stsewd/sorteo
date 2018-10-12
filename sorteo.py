@@ -6,7 +6,7 @@ import webbrowser
 
 import tortilla
 
-DFAULT_PAGINA = 'python-ecuador'
+DFAULT_PAGINA = "python-ecuador"
 
 
 def get_argparser():
@@ -17,20 +17,18 @@ def get_argparser():
         description="Escoge al azar uno o varios asistentes de un meetup."
     )
     parser.add_argument(
-        "-n", "--numero",
-        type=int, default=1,
-        help="Número de asistentes a escoger."
+        "-n",
+        "--numero",
+        type=int,
+        default=1,
+        help="Número de asistentes a escoger.",
     )
     parser.add_argument(
         "--no-abrir-perfil",
-        action='store_true',
-        help="No abrir el perfil de cada ganador en el navegador"
+        action="store_true",
+        help="No abrir el perfil de cada ganador en el navegador",
     )
-    parser.add_argument(
-        'evento',
-        type=str,
-        help="URL o id del evento."
-    )
+    parser.add_argument("evento", type=str, help="URL o id del evento.")
     return parser
 
 
@@ -41,9 +39,7 @@ def get_asistentes(pagina, evento):
     Más información en la documentación oficial de meetup:
     https://www.meetup.com/es/meetup_api/docs/:urlname/events/:id/attendance/
     """
-    api = tortilla.wrap(
-        f"https://api.meetup.com/{pagina}"
-    )
+    api = tortilla.wrap(f"https://api.meetup.com/{pagina}")
     return api.events(evento).attendance.get()
 
 
@@ -54,18 +50,18 @@ def procesar_evento(evento):
     Si el evento es sólo un id
     la página será dada por `DEFAULT_PAGINA`.
     """
-    regex_solo_id = re.compile(r'\d+')
+    regex_solo_id = re.compile(r"\d+")
     regex_full_url = re.compile(
-        r'(https?://)?www.meetup.com/'  # puede tener el protocolo
-        r'(\w+/)?'  # puede tener el lenguage
-        r'(?P<pagina>.+)/events/(?P<evento>\d+)/?'
+        r"(https?://)?www.meetup.com/"  # puede tener el protocolo
+        r"(\w+/)?"  # puede tener el lenguage
+        r"(?P<pagina>.+)/events/(?P<evento>\d+)/?"
     )
     if regex_solo_id.match(evento):
         return DFAULT_PAGINA, evento
     match = regex_full_url.match(evento)
     if match:
         match_dict = match.groupdict()
-        return match_dict['pagina'], match_dict['evento']
+        return match_dict["pagina"], match_dict["evento"]
     else:
         raise Exception("URL no válida.")
 
@@ -102,11 +98,13 @@ def mostrar_ganador(miembro, abrir_perfil=False, **kwargs):
     nombre = miembro["member"]["name"]
     id_ = miembro["member"]["id"]
     perfil = f"https://www.meetup.com/python-ecuador/members/{id_}"
-    mensaje = textwrap.dedent(f"""
+    mensaje = textwrap.dedent(
+        f"""
         *** Ganador(a) ***
         ¡Felicitacines {nombre}!
         {perfil}
-    """)
+    """
+    )
     print(mensaje, **kwargs)
     if abrir_perfil:
         webbrowser.open(perfil)
