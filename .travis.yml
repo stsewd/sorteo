@@ -6,5 +6,7 @@ matrix:
     - env: NOXSESSION=tests
     - env: NOXSESSION=lint
     - env: NOXSESSION=docs
+install:
+  - pip install nox
 script:
   - nox
