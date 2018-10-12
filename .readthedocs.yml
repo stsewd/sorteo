@@ -1,0 +1,5 @@
+version: 1
+formats: []
+python:
+  version: 3
+requirements_file = requirements-dev.txt
