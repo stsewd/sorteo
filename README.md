@@ -1,6 +1,6 @@
 # Sorteo
 
-[![Build Status](https://travis-ci.com/stsewd/sorteo.svg?token=tZwnW7qE7enKf3J5KbrM&branch=master)](https://travis-ci.com/stsewd/sorteo)
+[![Build Status](https://travis-ci.org/stsewd/sorteo.svg?branch=master)](https://travis-ci.org/stsewd/sorteo)
 
 Script para realizar sorteos usando los asistentes de un evento de meetup.com.
 
