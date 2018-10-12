@@ -22,4 +22,4 @@ def lint(session):
 def docs(session):
     session.install('-r', 'requirements-dev.txt')
     session.chdir('docs')
-    session.run('sphinx-build', '-W', '_build/html', '.')
+    session.run('sphinx-build', '-W', '.', '_build/html')
