@@ -7,4 +7,4 @@ matrix:
     - env: NOXSESSION=lint
     - env: NOXSESSION=docs
 script:
-  - nox -s $NOXSESSION
+  - nox
