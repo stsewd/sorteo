@@ -9,5 +9,6 @@ black
 
 # Docs
 sphinx
+sphinx_rtd_theme
 sphinx-autobuild
 sphinx-argparse
