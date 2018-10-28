@@ -15,7 +15,7 @@ Uso
 ---
 
 .. argparse::
-   :module: sorteo
+   :module: sorteo.main
    :func: get_argparser
    :prog: sorteo
 
