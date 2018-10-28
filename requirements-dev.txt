@@ -3,7 +3,7 @@
 pytest
 
 # Formatter & linter
-isort
+reorder-python-imports
 flake8
 black
 
