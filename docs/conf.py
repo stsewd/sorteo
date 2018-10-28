@@ -15,6 +15,8 @@
 import os
 import sys
 
+import pkg_resources
+
 sys.path.insert(0, os.path.abspath(".."))
 
 
@@ -25,9 +27,9 @@ copyright = "2018, Santos Gallegos"
 author = "Santos Gallegos"
 
 # The short X.Y version
-version = "0.1.0"
+version = pkg_resources.get_distribution("sorteo").version
 # The full version, including alpha/beta/rc tags
-release = "0.1.0"
+release = version
 
 
 # -- General configuration ---------------------------------------------------

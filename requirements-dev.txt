@@ -1,4 +1,3 @@
--r requirements.txt
 # Tests
 pytest
 
@@ -6,9 +5,3 @@ pytest
 reorder-python-imports
 flake8
 black
-
-# Docs
-sphinx
-sphinx_rtd_theme
-sphinx-autobuild
-sphinx-argparse
