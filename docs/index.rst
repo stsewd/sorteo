@@ -11,6 +11,13 @@ Script usado para realizar sorteos usando los asistentes de un evento de `Meetup
 .. contents:: Contenidos
    :local:
 
+Instalación
+-----------
+
+.. code:: bash
+
+   pip install --user --upgrade sorteo
+
 Uso
 ---
 
