@@ -4,4 +4,6 @@ build:
   image: latest
 python:
   version: 3.6
-requirements_file: requirements-dev.txt
+  setup_pip_install: true
+  extra_requirements:
+    - docs
