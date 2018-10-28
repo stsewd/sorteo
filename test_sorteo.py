@@ -40,7 +40,7 @@ def test_procesar_argumentos_abrir_perfil(opcion, esperado):
     "evento_test,pagina_esperada,evento_esperado",
     [
         # Default
-        ("1234", sorteo.DFAULT_PAGINA, "1234"),
+        ("1234", sorteo.DEFAULT_PAGINA, "1234"),
         # Con lenguaje
         ("www.meetup.com/es/python/events/1234", "python", "1234"),
         ("http://www.meetup.com/es/python/events/1234", "python", "1234"),

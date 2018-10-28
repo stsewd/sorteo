@@ -6,7 +6,7 @@ import webbrowser
 
 import tortilla
 
-DFAULT_PAGINA = "python-ecuador"
+DEFAULT_PAGINA = "python-ecuador"
 
 
 def get_argparser():
@@ -57,7 +57,7 @@ def procesar_evento(evento):
         r"(?P<pagina>.+)/events/(?P<evento>\d+)/?"
     )
     if regex_solo_id.match(evento):
-        return DFAULT_PAGINA, evento
+        return DEFAULT_PAGINA, evento
     match = regex_full_url.match(evento)
     if match:
         match_dict = match.groupdict()
