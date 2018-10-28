@@ -1,6 +1,7 @@
 # Sorteo
 
 [![Build Status](https://travis-ci.org/stsewd/sorteo.svg?branch=master)](https://travis-ci.org/stsewd/sorteo)
+[![PyPI](https://img.shields.io/pypi/v/sorteo.svg)](https://pypi.org/project/sorteo/)
 
 Script para realizar sorteos usando los asistentes de un evento de meetup.com.
 
