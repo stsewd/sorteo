@@ -4,6 +4,6 @@ build:
   image: latest
 python:
   version: 3.6
-  setup_pip_install: true
+  pip_install: true
   extra_requirements:
     - docs
