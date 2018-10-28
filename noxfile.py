@@ -1,14 +1,15 @@
 import nox
 
 
-files = ["sorteo.py", "test_sorteo.py", "noxfile.py", "docs/conf.py"]
+files = ["sorteo", "tests", "noxfile.py", "docs/conf.py"]
 black_options = ["-l", "79", "--py36"]
 
 
 @nox.session
 def tests(session):
     session.install("-r", "requirements-dev.txt")
-    session.run("pytest")
+    tests_files = session.posargs or ["tests/"]
+    session.run("pytest", *tests_files)
 
 
 @nox.session
@@ -28,7 +29,7 @@ def lint(session):
 def docs(session):
     session.install("-r", "requirements-dev.txt")
     session.chdir("docs")
-    session.run("rm", "-rf", "_build/")
+    session.run("rm", "-rf", "_build/", external=True)
     sphinx_args = ["-W", ".", "_build/html"]
     if "serve" in session.posargs:
         session.run("sphinx-autobuild", *sphinx_args)
